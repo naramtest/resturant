@@ -57,11 +57,12 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String TAG = "MainActivity";
     private ArrayList<Category> categoriesArray = new ArrayList<>();
+    private static final String TAG = "MainActivity";
 
     private SharedPreferenceManger sharedPreferenceManger;
     private AppDatabase appDatabase;
+    int foodNumber = 1;
 
     //category
     private ArrayList<Category> parseCategories = new ArrayList<>();
@@ -119,23 +120,27 @@ public class MainActivity extends AppCompatActivity {
 
         //check for user status
         is_logged_in = sharedPreferenceManger.getLogginInStatus();
+        tabLayout = findViewById(R.id.htab_tabs);
 
         //call refresh on app start
         if (isNetworkAvailable()){
             refresh();
         }
 
-        // show mainFragment on app start
-        ft = getSupportFragmentManager().beginTransaction();
-        Fragment mainFragment = new MainFragment();
-        ft.replace(R.id.your_placeholder, mainFragment, "main");
-        ft.commit();
+
+            // show mainFragment on app start
+            ft = getSupportFragmentManager().beginTransaction();
+            Fragment mainFragment = new MainFragment();
+            ft.replace(R.id.your_placeholder, mainFragment, "main");
+            ft.commit();
 
 
-        //tabLayout init
-        tabLayout = findViewById(R.id.htab_tabs);
-        loadAllCategories();
-        initTab();
+            //tabLayout init
+
+            loadAllCategories();
+            initTab();
+
+
 
     }
 
@@ -402,7 +407,6 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     private void camperCategoryInTowDataBases() {
-
         for (Category category : parseCategories){
             boolean categoryExist = false;
             for (Category category1 : roomCategories){
@@ -414,6 +418,8 @@ public class MainActivity extends AppCompatActivity {
                         updateCategoriesInRoom(category1);
                     }
                     categoryExist = true;
+                    foodNumber+=1;
+
                     break;
                 }
             }
@@ -422,8 +428,6 @@ public class MainActivity extends AppCompatActivity {
                 sharedPreferenceManger.storeFirstUse(1);
             }
         }
-
-
         for (final Category roomCategory: roomCategories){
             boolean existInRoomOnly = true;
             for (Category parsCategory:parseCategories){
