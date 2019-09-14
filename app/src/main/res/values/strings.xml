@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="back4app_server_url" translatable="false">https://parseapi.back4app.com/</string>
+
+    <!-- Change the following strings as required -->
+    <string name="back4app_app_id" translatable="false">4COJ8QvGBXAppZuRpniPdWipdjBsvZu9FQpjzFnS</string>
+    <string name="back4app_client_key" translatable="false">jFcN9pCtGFNWoVSOKdGV5NCflCaO6EoMVAcTdYEe</string>
+
+
+
+    <string name="notifications_admin_channel_name" translatable="false">Global channel</string>
+    <string name="notifications_admin_channel_description" translatable="false">Notifications sent from the app admin</string>
+
+
+    <string name="login_login_menu">Login</string>
+    <string name="refresh_login_menu">Refresh</string>
+</resources>
